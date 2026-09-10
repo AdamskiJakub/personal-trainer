@@ -5,7 +5,6 @@ interface FieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
   error?: string;
   textarea?: boolean;
-  /** Opcjonalna funkcja czyszcząca wpisywane znaki (np. tylko litery / tylko cyfry). */
   sanitize?: (value: string) => string;
 }
 
@@ -20,8 +19,7 @@ export function Field({
 }: FieldProps) {
   const generatedId = useId();
   const fieldId = id ?? generatedId;
-  // Pojedyncza linia oddzielająca pola pochodzi wyłącznie z wrappera —
-  // sam input/textarea nie ma własnego bordera (brak podwójnej kreski).
+
   const inputClass =
     "w-full border-0 bg-transparent py-4 text-base text-paper placeholder:text-muted/80 focus:outline-none transition-colors";
 

@@ -24,7 +24,6 @@ export function Footer() {
     <footer className="border-t border-line">
       <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 md:py-16">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between md:gap-8">
-          {/* Branding */}
           <div>
             <p className="font-display text-lg font-semibold tracking-tight text-paper">
               {site.name}
@@ -32,7 +31,6 @@ export function Footer() {
             <p className="mt-1 text-sm text-muted">{site.hero.role}</p>
           </div>
 
-          {/* Linki */}
           <nav
             aria-label="Linki społecznościowe i prawne"
             className="flex flex-col gap-3 md:flex-row md:items-center md:gap-8"
@@ -60,7 +58,6 @@ export function Footer() {
           </nav>
         </div>
 
-        {/* Dolna linia */}
         <div className="mt-12 border-t border-line pt-6 md:mt-16">
           <p className="text-xs text-muted">
             © {year} {site.name}

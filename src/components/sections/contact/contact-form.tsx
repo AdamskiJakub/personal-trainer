@@ -69,9 +69,8 @@ export function ContactForm() {
       noValidate
       className="border-t border-line"
     >
-      {/* Honeypot — ukryte pole antyspamowe */}
       <div
-        className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden"
+        className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden"
         aria-hidden="true"
       >
         <label htmlFor="website">Nie wypełniaj tego pola</label>
@@ -118,7 +117,7 @@ export function ContactForm() {
         {...register("message")}
       />
 
-      <div className="py-6">
+      <div className="pt-6 pb-8 sm:pb-6">
         <label className="group flex cursor-pointer items-start gap-3">
           <input
             type="checkbox"
@@ -127,7 +126,7 @@ export function ContactForm() {
           />
           <span
             aria-hidden="true"
-            className={`mt-1 flex h-4 w-4 shrink-0 items-center justify-center border transition-colors peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-paper ${
+            className={`mt-1 flex h-4 w-4 shrink-0 items-center justify-center border transition-colors peer-focus-visible:outline peer-focus-visible:outline-offset-2 peer-focus-visible:outline-paper ${
               privacyChecked
                 ? "border-paper bg-paper"
                 : "border-line bg-transparent"
@@ -175,7 +174,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex h-12 cursor-pointer items-center justify-center rounded-full bg-paper px-7 text-sm font-medium text-ink transition-colors duration-200 select-none hover:bg-white hover:shadow-[0_0_0_1px_rgba(244,242,237,0.5)] disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex h-12 w-full cursor-pointer items-center justify-center rounded-full bg-paper px-7 text-sm font-medium text-ink transition-colors duration-200 select-none hover:bg-white hover:shadow-[0_0_0_1px_rgba(244,242,237,0.5)] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
         {status === "submitting" ? "Wysyłanie…" : form.submit}
       </button>

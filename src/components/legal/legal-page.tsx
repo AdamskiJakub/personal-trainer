@@ -1,39 +1,25 @@
 import type { ReactNode } from "react";
 
 interface LegalDefinition {
-  /** Definiowane pojęcie, np. "Trener" */
   term: string;
-  /** Definicja pojęcia */
   definition: string;
 }
 
 interface LegalSection {
-  /** Numer paragrafu, np. "§1" */
   number: string;
-  /** Tytuł paragrafu, np. "Postanowienia ogólne" */
   title: string;
-  /** Treść paragrafu — lista akapitów / punktów */
   paragraphs?: ReactNode[];
-  /** Lista definicji (np. w §2 Definicje) */
   definitions?: LegalDefinition[];
-  /** Lista wypunktowana (np. zakres usług w §3) */
   list?: string[];
-  /** Akapity wyświetlane po liście wypunktowanej */
   afterList?: ReactNode[];
 }
 
 interface LegalPageProps {
-  /** Tytuł dokumentu, np. "Regulamin" */
   title: string;
-  /** Podtytuł / data, np. "Regulamin świadczenia usług treningu personalnego" */
   subtitle?: string;
   sections: LegalSection[];
 }
 
-/**
- * Reużywalny układ strony prawnej (Regulamin, Polityka prywatności itd.)
- * spójny z edytorską, monochromatyczną stylistyką serwisu.
- */
 export function LegalPage({ title, subtitle, sections }: LegalPageProps) {
   return (
     <div className="mx-auto max-w-3xl px-5 py-16 sm:px-8 md:py-24">

@@ -1,23 +1,21 @@
 import { site } from "@/lib/site";
 import { Photo } from "@/components/ui/photo";
+import { Reveal } from "@/components/ui/reveal";
 
 export function Audience() {
   return (
     <section id="dla-kogo" className="relative">
-      <div className="mx-auto max-w-6xl px-5 pb-24 pt-6 sm:px-8 md:pb-32 md:pt-8">
-        {/* GÓRNA CZĘŚĆ — zdjęcie po lewej, treść po prawej (odwrócone jak Hero) */}
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16 md:py-20">
         <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-12">
-          {/* KOLUMNA ZDJĘCIA */}
-          <div className="md:col-span-6 lg:col-span-6 grayscale">
+          <Reveal className="md:col-span-6 lg:col-span-6 grayscale">
             <Photo
               src="/images/ddd.jpeg"
               alt="Trening personalny — praca z podopiecznym"
               className="h-105 sm:h-120 md:aspect-4/5 md:h-auto"
             />
-          </div>
+          </Reveal>
 
-          {/* KOLUMNA TREŚCI */}
-          <div className="md:col-span-6 lg:col-span-6">
+          <Reveal className="md:col-span-6 lg:col-span-6" delay={100}>
             <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted">
               Dla kogo
             </p>
@@ -27,10 +25,9 @@ export function Audience() {
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
               {site.audience.intro}
             </p>
-          </div>
+          </Reveal>
         </div>
 
-        {/* LISTA 01–05 — editorialowe wiersze z numeracją */}
         <ul className="mt-16 border-t border-line md:mt-24">
           {site.audience.items.map((item) => (
             <li

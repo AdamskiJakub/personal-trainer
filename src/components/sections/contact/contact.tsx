@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { Reveal } from "@/components/ui/reveal";
 import { ContactForm } from "./contact-form";
 
 export function Contact() {
@@ -12,10 +13,9 @@ export function Contact() {
 
   return (
     <section id="kontakt" className="relative">
-      <div className="mx-auto max-w-6xl px-5 pb-24 pt-6 sm:px-8 md:pb-32 md:pt-8">
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16 md:py-20">
         <div className="grid grid-cols-1 gap-x-16 gap-y-14 md:grid-cols-12">
-          {/* Lewa kolumna — nagłówek + dane kontaktowe */}
-          <div className="md:col-span-5">
+          <Reveal className="md:col-span-5">
             <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted">
               {contact.label}
             </p>
@@ -64,12 +64,11 @@ export function Contact() {
                 ))}
               </ul>
             </div>
-          </div>
+          </Reveal>
 
-          {/* Prawa kolumna — formularz */}
-          <div className="md:col-span-7">
+          <Reveal className="md:col-span-7" delay={100}>
             <ContactForm />
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

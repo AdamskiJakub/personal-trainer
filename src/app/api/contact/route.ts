@@ -4,11 +4,6 @@ import { contactSchema } from "@/lib/contact-schema";
 
 export const runtime = "nodejs";
 
-/**
- * Minimalny Route Handler dla formularza kontaktowego.
- * Waliduje dane ponownie po stronie serwera (nie ufamy frontowi),
- * odrzuca wiadomości z wypełnionym honeypotem i wysyła mail przez Resend.
- */
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -27,15 +22,13 @@ export async function POST(request: Request) {
 
   const { name, email, phone, message, website } = parsed.data;
 
-  // Honeypot — jeśli wypełnione, udajemy sukces, ale nie wysyłamy.
   if (website) {
     return NextResponse.json({ ok: true });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.CONTACT_EMAIL;
-  // Adres nadawcy. Domyślnie Resend onboarding (działa bez weryfikacji domeny,
-  // tylko do testów). Po weryfikacji domeny ustaw CONTACT_FROM na własny adres.
+
   const fromEmail =
     process.env.CONTACT_FROM ?? "Jakub Adamski <onboarding@resend.dev>";
 
