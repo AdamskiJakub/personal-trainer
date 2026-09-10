@@ -1,9 +1,5 @@
 import { site } from "@/lib/site";
 
-/**
- * Bazowy adres strony. Tymczasowo domena Vercel — do podmiany razem z
- * `metadataBase` w layout.tsx, gdy ustalimy docelową domenę.
- */
 const BASE_URL = "https://personal-trainer.vercel.app";
 
 const CONTACT_EMAIL = site.contact.channels.email.value;
@@ -11,9 +7,6 @@ const FACEBOOK_URL = site.contact.channels.messenger.href;
 const INSTAGRAM_URL = site.contact.channels.instagram.href;
 const MAPS_URL = site.services.location.mapsUrl;
 
-/**
- * Osoba — trener personalny. Główny byt opisujący stronę.
- */
 export const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -33,15 +26,13 @@ export const personJsonLd = {
     "trening personalny",
     "trening siłowy",
     "trening funkcjonalny",
-    "kickboxing",
     "przygotowanie motoryczne",
+    "kickboxing",
+    "taniec",
+    "bachata",
   ],
 };
 
-/**
- * Miejsce prowadzenia usług — siłownia, w której odbywają się treningi.
- * `SportsActivityLocation` jest trafniejszy niż ogólny `LocalBusiness`.
- */
 export const businessJsonLd = {
   "@context": "https://schema.org",
   "@type": "SportsActivityLocation",
@@ -84,9 +75,6 @@ export const businessJsonLd = {
   ],
 };
 
-/**
- * Usługa — trening personalny wraz z wariantami cenowymi.
- */
 export const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
@@ -127,9 +115,6 @@ export const serviceJsonLd = {
   ],
 };
 
-/**
- * FAQ — na podstawie pytań i odpowiedzi z sekcji FAQ.
- */
 export const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -144,9 +129,6 @@ export const faqJsonLd = {
   })),
 };
 
-/**
- * Wszystkie bloki JSON-LD dla strony głównej.
- */
 export const homeJsonLd = [
   personJsonLd,
   businessJsonLd,

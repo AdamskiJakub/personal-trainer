@@ -15,7 +15,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Blokada scrolla, gdy menu mobile jest otwarte
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
@@ -34,7 +33,6 @@ export function Navbar() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        {/* Logo / nazwa */}
         <a
           href="/"
           className="min-w-0 truncate font-display text-sm font-semibold uppercase tracking-[0.2em] text-paper"
@@ -42,7 +40,6 @@ export function Navbar() {
           {site.name}
         </a>
 
-        {/* Nawigacja desktop */}
         <nav
           aria-label="Nawigacja główna"
           className="hidden items-center md:flex"
@@ -66,7 +63,6 @@ export function Navbar() {
           </ButtonLink>
         </nav>
 
-        {/* Przycisk menu mobile */}
         <button
           type="button"
           aria-label={open ? "Zamknij menu" : "Otwórz menu"}
@@ -81,13 +77,12 @@ export function Navbar() {
           />
           <span
             className={`h-px w-5 bg-paper transition-transform duration-300 ${
-              open ? "-translate-y-[3.5px] -rotate-45" : ""
+              open ? "translate-y-[-3.5px] -rotate-45" : ""
             }`}
           />
         </button>
       </div>
 
-      {/* Pełnoekranowe menu mobile */}
       <div
         className={`fixed inset-0 top-16 z-40 flex flex-col overflow-y-auto bg-ink transition-all duration-300 ease-out md:hidden ${
           open

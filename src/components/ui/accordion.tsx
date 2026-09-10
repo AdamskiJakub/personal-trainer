@@ -3,12 +3,6 @@
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 
-/**
- * Accordion oparty o Radix UI (shadcn/ui), dostylowany do monochromatycznego,
- * editorialnego designu strony — bez kart, cieni i zaokrąglonych pudełek.
- * Wiersze rozdzielone cienkimi liniami, wskaźnik +/−.
- */
-
 const Accordion = AccordionPrimitive.Root;
 
 const AccordionItem = React.forwardRef<

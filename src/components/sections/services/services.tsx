@@ -1,14 +1,14 @@
 import { site } from "@/lib/site";
 import { ButtonLink } from "@/components/ui/button";
+import { Reveal } from "@/components/ui/reveal";
 
 export function Services() {
   const { services } = site;
 
   return (
     <section id="oferta" className="relative">
-      <div className="mx-auto max-w-6xl px-5 pb-24 pt-6 sm:px-8 md:pb-32 md:pt-8">
-        {/* Nagłówek sekcji */}
-        <div className="max-w-3xl">
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16 md:py-20">
+        <Reveal className="max-w-3xl">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted">
             {services.label}
           </p>
@@ -18,12 +18,10 @@ export function Services() {
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
             {services.intro}
           </p>
-        </div>
+        </Reveal>
 
-        {/* Dwie podstawowe formy — editorialowe kolumny */}
         <div className="mt-16 grid grid-cols-1 gap-x-12 gap-y-14 border-t border-line pt-10 md:mt-20 md:grid-cols-2 md:gap-x-16 md:pt-12">
-          {/* Trening personalny */}
-          <div className="flex flex-col">
+          <Reveal className="flex flex-col">
             <h3 className="font-display text-2xl font-medium tracking-tight text-paper sm:text-3xl">
               {services.single.name}
             </h3>
@@ -36,10 +34,9 @@ export function Services() {
             <p className="mt-5 max-w-md text-base leading-relaxed text-muted">
               {services.single.description}
             </p>
-          </div>
+          </Reveal>
 
-          {/* Pakiety treningów */}
-          <div className="flex flex-col">
+          <Reveal className="flex flex-col" delay={100}>
             <h3 className="font-display text-2xl font-medium tracking-tight text-paper sm:text-3xl">
               {services.packages.name}
             </h3>
@@ -66,13 +63,11 @@ export function Services() {
             <p className="mt-5 max-w-md text-sm leading-relaxed text-muted">
               {services.packages.note}
             </p>
-          </div>
+          </Reveal>
         </div>
 
-        {/* Prowadzenie treningowe — wyróżniona, najbardziej kompleksowa opcja */}
-        <div className="mt-16 rounded-2xl border border-line bg-surface p-7 sm:p-10 md:mt-20 md:p-12">
+        <Reveal className="mt-16 rounded-2xl border border-line bg-surface p-7 sm:p-10 md:mt-20 md:p-12">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-12">
-            {/* Lewa kolumna — nazwa, cena, opis */}
             <div className="md:col-span-5">
               <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted">
                 {services.coaching.tag}
@@ -96,7 +91,6 @@ export function Services() {
               </div>
             </div>
 
-            {/* Prawa kolumna — co w cenie */}
             <div className="md:col-span-7">
               <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted">
                 W cenie
@@ -119,9 +113,8 @@ export function Services() {
               </ul>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        {/* Informacje dodatkowe — trening 2:1 i lokalizacja */}
         <div className="mt-10 flex flex-col gap-4 border-t border-line pt-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:gap-6">
           <p>{services.note}</p>
           <p className="sm:text-right">

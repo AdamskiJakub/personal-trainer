@@ -1,10 +1,5 @@
 import { z } from "zod";
 
-/**
- * Wspólna walidacja formularza kontaktowego.
- * Używana po stronie klienta (react-hook-form + resolver) oraz
- * ponownie po stronie serwera w /api/contact/route.ts.
- */
 export const contactSchema = z.object({
   name: z
     .string()
@@ -27,9 +22,6 @@ export const contactSchema = z.object({
   privacy: z
     .boolean()
     .refine((value) => value === true, "Zaakceptuj politykę prywatności"),
-  // Prosty honeypot antyspamowy — pole ukryte przed użytkownikiem.
-  // Nie ograniczamy długości: wypełnione pole ma przejść walidację,
-  // a ciche odrzucenie następuje dopiero w route.ts.
   website: z.string().optional(),
 });
 

@@ -1,19 +1,18 @@
 import { site } from "@/lib/site";
+import { Reveal } from "@/components/ui/reveal";
 
 export function About() {
   return (
     <section id="o-mnie" className="relative">
-      <div className="mx-auto max-w-6xl px-5 pb-24 pt-6 sm:px-8 md:pb-32 md:pt-8">
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16 md:py-20">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-12">
-          {/* Lewa kolumna — etykieta sekcji */}
           <div className="md:col-span-4 md:self-start md:sticky md:top-24">
             <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted">
               O mnie
             </p>
           </div>
 
-          {/* Prawa kolumna — nagłówek + podpis + historia */}
-          <div className="md:col-span-8">
+          <Reveal className="md:col-span-8">
             <h2 className="mt-[-0.1em] max-w-xl font-display text-3xl font-medium leading-[1.1] tracking-tight text-paper sm:text-4xl lg:text-5xl">
               {site.about.headline}
             </h2>
@@ -28,11 +27,10 @@ export function About() {
                 </p>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
 
-        {/* Fakty — czysta typografia, cienkie linie, bez ikon i kart */}
-        <div className="mt-16 grid grid-cols-3 gap-x-4 gap-y-10 border-t border-line pt-8 md:mt-20 md:gap-x-8 md:pt-10">
+        <Reveal className="mt-16 grid grid-cols-3 gap-x-4 gap-y-10 border-t border-line pt-8 md:mt-20 md:gap-x-8 md:pt-10">
           {site.about.facts.map((fact) => (
             <div key={fact.value}>
               <p className="font-display text-2xl font-medium tracking-tight text-paper sm:text-4xl">
@@ -50,7 +48,7 @@ export function About() {
               </p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

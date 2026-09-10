@@ -1,24 +1,31 @@
 @import "tailwindcss";
 
-/*
-  Monochromatyczna baza (etap 1 — bez finalnego accent color).
-  Akcent (lub jego brak) dobierzemy po obejrzeniu wszystkich zdjęć.
-*/
 @theme {
-  --color-ink: #0b0b0c; /* near black — tło główne */
-  --color-surface: #161617; /* dark surface */
-  --color-paper: #f4f2ed; /* off-white — jasne sekcje / tekst na ciemnym */
-  --color-muted: #8e8d8a; /* muted grey — tekst drugorzędny */
-  --color-line: #262627; /* linie / obramowania */
+  --color-ink: #0b0b0c;
+  --color-surface: #161617;
+  --color-paper: #f4f2ed;
+  --color-muted: #8e8d8a;
+  --color-line: #262627;
 
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-display:
     var(--font-space-grotesk), var(--font-manrope), ui-sans-serif, system-ui,
     sans-serif;
 
-  /* Animacje accordionu (Radix/shadcn) */
   --animate-accordion-down: accordion-down 0.25s ease-out;
   --animate-accordion-up: accordion-up 0.25s ease-out;
+  --animate-hero-in: hero-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes hero-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @keyframes accordion-down {
@@ -56,25 +63,50 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Ustawiamy domyślną selekcję w tonacji bazy */
 ::selection {
   background-color: var(--color-paper);
   color: var(--color-ink);
 }
 
-/*
-  Widoczny focus dla nawigacji klawiaturą.
-  Domyślny outline przeglądarki bywa słabo widoczny na ciemnym tle,
-  więc używamy jasnego pierścienia w tonacji "paper".
-*/
 :focus-visible {
   outline: 2px solid var(--color-paper);
   outline-offset: 2px;
   border-radius: 2px;
 }
 
-/* Pola formularza mają własny, subtelniejszy wskaźnik focusu */
 input:focus-visible,
 textarea:focus-visible {
   outline: none;
+}
+
+.hero-in {
+  animation: var(--animate-hero-in);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-in {
+    animation: none;
+  }
+}
+
+.reveal-init {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-init.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-init {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
