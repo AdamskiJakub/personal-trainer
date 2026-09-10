@@ -1,26 +1,80 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+  Monochromatyczna baza (etap 1 — bez finalnego accent color).
+  Akcent (lub jego brak) dobierzemy po obejrzeniu wszystkich zdjęć.
+*/
+@theme {
+  --color-ink: #0b0b0c; /* near black — tło główne */
+  --color-surface: #161617; /* dark surface */
+  --color-paper: #f4f2ed; /* off-white — jasne sekcje / tekst na ciemnym */
+  --color-muted: #8e8d8a; /* muted grey — tekst drugorzędny */
+  --color-line: #262627; /* linie / obramowania */
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-space-grotesk), var(--font-manrope), ui-sans-serif, system-ui,
+    sans-serif;
+
+  /* Animacje accordionu (Radix/shadcn) */
+  --animate-accordion-down: accordion-down 0.25s ease-out;
+  --animate-accordion-up: accordion-up 0.25s ease-out;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
   }
 }
 
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Ustawiamy domyślną selekcję w tonacji bazy */
+::selection {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+
+/*
+  Widoczny focus dla nawigacji klawiaturą.
+  Domyślny outline przeglądarki bywa słabo widoczny na ciemnym tle,
+  więc używamy jasnego pierścienia w tonacji "paper".
+*/
+:focus-visible {
+  outline: 2px solid var(--color-paper);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Pola formularza mają własny, subtelniejszy wskaźnik focusu */
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
 }
